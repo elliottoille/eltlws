@@ -1,2 +1,2 @@
 # eltlws
-Web based encrypted messaging application
+web based encrypted messaging application
