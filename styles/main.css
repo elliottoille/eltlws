@@ -3,3 +3,20 @@ body {
     width: 100%;
     margin: 0;
 }
+ul {
+    list-style: none;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    float: left;
+    margin-left: 50px;
+}
+ul li a {
+    line-height: 50px;
+}
+iframe {
+    height: calc(100%-50px)
+    width: 100%;
+}
