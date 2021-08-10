@@ -17,6 +17,6 @@ ul li a {
     line-height: 50px;
 }
 iframe {
-    height: calc(100%-50px)
+    height: calc(100%-50px);
     width: 100%;
 }
