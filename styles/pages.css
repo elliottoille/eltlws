@@ -1,12 +1,13 @@
-* {background: green; margin: 0;}
-ul {
+body {
+    background: green;
     height: 100%;
-    width: 25%;
-    position: absolute;
-    margin-top: 100px;
+    margin: 0;
 }
 iframe {
+    float: right;
     height: 100%;
     width: 75%;
-    float: right;
+}
+ul {
+    position: absolute;
 }
