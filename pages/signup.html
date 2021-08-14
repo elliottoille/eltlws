@@ -4,10 +4,13 @@
     <input type="text" placeholder="username" name="username">
 
     <label for="password">password</label>
-    <input type="password" placeholder="password" name="password">
+    <input id="password" type="password" placeholder="password" name="password" onkeyup="checkPasswordMatch();">
 
     <label for="confirmPassword">confirm password</label>
-    <input type="password" placeholder="confirm password" name="confirmPassword">
+    <input id="confirmPassword" type="password" placeholder="confirm password" name="confirmPassword" onkeyup="checkPasswordMatch();">
+
+    <p id="passwordMatchAlert">alpha</p>
 
     <button type="submit">sign up</button>
 </form>
+<script src="../js/checkPasswordMatch.js" type="text/javascript"></script>
