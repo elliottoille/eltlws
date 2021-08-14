@@ -8,10 +8,16 @@ ul {
     height: 50px;
     padding: 0;
     margin: 0;
+    margin-left: 50px;
 }
 ul li {
     float: left;
-    margin-left: 50px;
+    height: 100%;
+    width: 120px;
+    text-align: center;
+}
+ul li:hover {
+    background: blue;
 }
 ul li a {
     line-height: 50px;
