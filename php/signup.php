@@ -23,11 +23,11 @@
                 $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
 
                 $result = mysqli_query($conn, $sql);
+                echo $result;
             } else {
                 echo "passwords do not match";
             }
-        }
-        if ($num > 0) {
+        } else {
             echo "username not available";
         }
     }
