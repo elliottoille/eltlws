@@ -3,7 +3,7 @@
     $displayAlert = false;
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        include('dbconnect.php');
+        include 'dbconnect.php';
 
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -27,12 +27,12 @@
                     $displayAlert = true;
                     echo "bingo";
             } else {
-                $displayError = "passwords do not match";
+                echo "passwords dont match";
             }
         }
 
         if ($num > 0) {
-            $displayError = "username not available";
+            echo "username not available";
         }
     }
 
@@ -40,8 +40,8 @@
         echo 'show alert was true which is meant to be good?';
     }
     if ($displayAlert == false) {
-        echo $displayAlert;
+        echo "display alert false";
     }
     }
-    
+
 ?>
