@@ -1,14 +1,14 @@
 <?php
 
-    $servername = "localhost";
+    $servername = "127.0.0.1";
     $username = "root";
     $password = "";
 
-    $database = "eltlws"
+    $database = "eltlws";
 
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    $connect = mysqli_connect($servername, $username, $password, $database);
 
-    if($conn) {
+    if($connect) {
         echo "success";
     } else {
         die("Error". mysqli_connect_error());
