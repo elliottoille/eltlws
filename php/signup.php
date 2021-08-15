@@ -8,7 +8,7 @@
         $password = $_POST["password"];
         $confirmPassword = $_POST["confirmPassword"];
 
-        $sql = "SELECT * FROM users WHERE username='$username'";
+        $sql = "select * from users where username='$username'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -20,7 +20,7 @@
                 echo "entered passwords do match<br>";
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
+                $sql = "insert into `users` (`username`, `password`) values ('$username', '$hash')";
 
                 $result = mysqli_query($conn, $sql);
                 echo $result;
