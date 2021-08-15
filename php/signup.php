@@ -18,7 +18,7 @@
             if ($password == $confirmPassword) {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
+                $sql = "INSERT INTO `users` (`username`, `password`) VALUES (`$username`, `$hash`)";
 
                 $result = mysqli_query($conn, $sql);
 
