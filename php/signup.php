@@ -28,17 +28,9 @@
                 echo "passwords dont match";
             }
         }
-
         if ($num > 0) {
             echo "username not available";
         }
-    }
-
-    if ($displayAlert) {
-        echo 'show alert was true which is meant to be good?';
-    }
-    if ($displayAlert == false) {
-        echo "display alert false";
     }
     }
 
