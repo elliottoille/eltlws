@@ -1,5 +1,5 @@
 <?php
-
+    echo "if you see this, you atleast ran signup.php";
     $displayAlert = false;
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,6 +12,8 @@
         $sql = "Select * from users where username='$username'";
 
         $result = mysqli_query($conn, $sql);
+
+        echo "if you see this initial query was great success";
 
         $num = mysqli_num_rows($result);
 
