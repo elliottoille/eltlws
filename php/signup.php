@@ -1,5 +1,4 @@
 <?php
-    echo "if you see this, you atleast ran signup.php";
     $displayAlert = false;
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,8 +12,6 @@
 
         $result = mysqli_query($conn, $sql);
 
-        echo "if you see this initial query was great success";
-
         $num = mysqli_num_rows($result);
 
         if ($num == 0) {
@@ -27,7 +24,6 @@
 
                 if ($result) {
                     $displayAlert = true;
-                    echo "bingo";
             } else {
                 echo "passwords dont match";
             }
