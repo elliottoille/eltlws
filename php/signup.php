@@ -19,11 +19,11 @@
             if ($password == $confirmPassword) {
                 echo "entered passwords do match<br>";
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-
+                echo "$hash<br>";
                 $sql = "insert into `users` (`username`, `password`) values ('$username', '$hash')";
-
+                echo "$sql<br>";
                 $result = mysqli_query($conn, $sql);
-                echo "$result";
+                echo "$result<br>";
             } else {
                 echo "passwords do not match";
             }
