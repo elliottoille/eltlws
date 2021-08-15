@@ -1,7 +1,7 @@
 <?php
     $servername = "127.0.0.1";
     $username = "root";
-    $password = ">.k!!<+nWEx"*t6>`o-%";
+    $password = '>.k!!<+nWEx"*t6>`o-%';
 
     $database = "eltlws";
 
