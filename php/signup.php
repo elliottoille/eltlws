@@ -23,7 +23,7 @@
                 $sql = "insert into `users` (`username`, `password`) values ('$username', '$hash')";
 
                 $result = mysqli_query($conn, $sql);
-                echo $result;
+                echo "$result";
             } else {
                 echo "passwords do not match";
             }
