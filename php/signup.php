@@ -1,45 +1,47 @@
 <?php
-$displayAlert = false;
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'dbconnect.php';
+    $displayAlert = false;
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirmPassword"];
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        include('dbconnect.php');
 
-    $sql = "Select * from users where username='$username'";
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $confirmPassword = $_POST["confirmPassword"];
 
-    $result = mysqli_query($conn, $sql);
+        $sql = "Select * from users where username='$username'";
 
-    $num = mysqli_num_rows($result);
+        $result = mysqli_query($conn, $sql);
 
-    if ($num == 0) {
-        if ($password == $confirmPassword) {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
+        $num = mysqli_num_rows($result);
 
-            $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
+        if ($num == 0) {
+            if ($password == $confirmPassword) {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
 
-            $result = mysqli_query($conn, $sql);
+                $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
 
-            if ($result) {
-                $displayAlert = true;
+                $result = mysqli_query($conn, $sql);
+
+                if ($result) {
+                    $displayAlert = true;
+                    echo "bingo";
+            } else {
+                $displayError = "passwords do not match";
             }
-        } else {
-            $displayError = "passwords do not match";
+        }
+
+        if ($num > 0) {
+            $displayError = "username not available";
         }
     }
 
-    if ($num > 0) {
-        $displayError = "username not available";
+    if ($displayAlert) {
+        echo 'show alert was true which is meant to be good?';
     }
-}
-
-if ($displayAlert) {
-    echo 'show alert was true which is meant to be good?';
-}
-if ($displayAlert == false) {
-    echo $displayAlert;
-}
-
+    if ($displayAlert == false) {
+        echo $displayAlert;
+    }
+    }
+    
 ?>
