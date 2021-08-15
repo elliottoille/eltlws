@@ -30,5 +30,9 @@
         } else {
             echo "username not available";
         }
+        $sql = "select * from users where 'username'='$username'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        echo $row['username'];
     }
 ?>
