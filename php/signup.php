@@ -1,6 +1,6 @@
 <?php
     $displayAlert = false;
-
+    echo "epic";
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         include 'dbconnect.php';
 
