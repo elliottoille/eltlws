@@ -8,7 +8,7 @@
         $password = $_POST["password"];
         $confirmPassword = $_POST["confirmPassword"];
 
-        $sql = "select * from `users` where username=`$username`;"
+        $sql = "select * from `users` where username=`$username`;";
 
         $result = mysqli_query($conn, $sql);
 
