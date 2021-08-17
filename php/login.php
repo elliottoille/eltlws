@@ -5,7 +5,7 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         
-        $sql = "select 'password' where 'username' = '$username'";
+        $sql = "select 'password' where 'username'='$username' from users";
 
         $result = mysqli_query($conn, $sql);
 

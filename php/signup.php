@@ -1,6 +1,5 @@
 <?php
     $displayAlert = false;
-    echo "epic";
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         include 'dbconnect.php';
 
@@ -12,20 +11,13 @@
 
         $result = mysqli_query($conn, $sql);
 
-        echo $result;
-
         $num = mysqli_num_rows($result);
 
         if ($num == 0) {
-            echo "no other users with this username in table<br>";
             if ($password == $confirmPassword) {
-                echo "entered passwords do match<br>";
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                echo "$hash<br>";
                 $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash')";
-                echo "$sql<br>";
                 $result = mysqli_query($conn, $sql);
-                echo "it made it past the execution of the sql";
             } else {
                 echo "passwords do not match";
             }
