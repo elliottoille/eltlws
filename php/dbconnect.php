@@ -6,9 +6,7 @@
     $database = "eltlws";
 
     $conn = mysqli_connect($servername, $username, $password, $database);
-    if($conn) {
-        echo "successful connection";
-    } else {
+    if(!$conn) {
         die("Error: ". mysqli_connect_error());
     }
 ?>
