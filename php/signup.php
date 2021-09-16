@@ -20,6 +20,7 @@ session_start();
                 $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Set the SQL statement to insert the entered users details into the database (stores the hashed password)
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
                 $_SESSION["username"] = $username;
+                header('location: ../pages/settings.html');
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }
