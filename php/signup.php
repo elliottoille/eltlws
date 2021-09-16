@@ -16,7 +16,7 @@
             if ($password == $confirmPassword) { # If both the entered passwords match each other then
                 $hash = password_hash($password, PASSWORD_DEFAULT); # Set hash equal to the entered password but hashed
                 $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Set the SQL statement to insert the entered users details into the database (stores the hashed password)
-                $result = mysqli_query($conn, $sql); # Query the database with the SQL statement
+                $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }
