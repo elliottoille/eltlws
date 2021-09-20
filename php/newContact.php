@@ -3,10 +3,10 @@
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
 
         $username = $_POST["username"]; # Sets username equal to the username passed by the POST method
-        $password = $_POST["password"]; # Sets password equal to the password passed by the POST method
-        $confirmPassword = $_POST["confirmPassword"]; # Sets confirmPassword to the confirm password passed by the POST method
 
-        $sql = "SELECT * FROM `users` WHERE username='$username';"; # Create an SQL statement that fetches all the data from the database where the username equals the entered username
+        $tableName = ord($_SESSION['username']) * ord($username);
+
+        $sql = "SELECT newContact FROM `` WHERE username='$username';"; # Create an SQL statement that fetches all the data from the database where the username equals the entered username
 
         $result = mysqli_query($conn, $sql); # Query the database with the previous SQL statement
 
