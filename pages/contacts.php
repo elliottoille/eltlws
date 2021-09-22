@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <link rel="stylesheet" href="../styles/pages.css">
 <link rel="stylesheet" href="../styles/contacts.css">
 <ul>
