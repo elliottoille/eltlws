@@ -10,8 +10,9 @@ session_start();
         $sql = "SELECT `password` FROM `users` WHERE username=`$username`;"; # Create an SQL statement that fetches the password from the database where the username matches the entered username
 
         $result = mysqli_query($conn, $sql); # Query the database with the previous SQL statement
-        echo str($result);
-
+        $count = mysqli_num_rows($result);
+        echo $count;
+        
         if (password_verify($password, $result)) { # If the given password matches the password from the database (checks hashes of the passwords) then
             echo "passwords match"; # Display that the entered passwords match on the webpage
             $_SESSION["username"] = $username;
