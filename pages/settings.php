@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <link rel="stylesheet" href="../styles/pages.css">
 <ul>
     <li><a href="settings/account.php" target="settings">account</a></li>
