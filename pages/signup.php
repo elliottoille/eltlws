@@ -2,7 +2,7 @@
 session_start();
 ?>
 <link rel="stylesheet" href="../styles/main.css">
-<form action="../php/signup.php" onsubmit="event.preventDefault(); checkPasswordMatch.js" method="POST">
+<form action="../php/signup.php" method="POST">
     <label for="username">username</label>
     <input type="text" placeholder="username" name="username">
 
