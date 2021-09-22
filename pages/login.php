@@ -1,6 +1,7 @@
->?php
+<?php
 session_start();
-?><link rel="stylesheet" href="../styles/main.css">
+?>
+<link rel="stylesheet" href="../styles/main.css">
 <form action="../php/login.php" method="POST">
     <label for="username">username</label>
     <input type="text" placeholder="username" name="username">
