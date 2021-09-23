@@ -16,7 +16,10 @@ session_start();
         if (password_verify($password, $result)) { # If the given password matches the password from the database (checks hashes of the passwords) then
             echo "passwords match"; # Display that the entered passwords match on the webpage
             $_SESSION["username"] = $username;
-            header('location: ../pages/settings.html');
+            $sql = "SELECT `userid` FROM `users` WHERE `username`=`$username`;";
+            $result = mysqli_query($conn, $sql);
+            $_SESSION["userID"] = $result;
+            header('location: ../pages/settings.php');
         } else {
             echo "what the fuck";
         }
