@@ -18,5 +18,9 @@
         }
 
         $tableName = $userID1binary ^ $userID2binary;
+        echo $tableName;
+
+        $sql = "CREATE TABLE $tableName(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL,PRIMARY KEY (userID));";
+        $result = mysqli_query($conn, $sql);
     }
 ?>
