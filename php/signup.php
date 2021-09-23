@@ -23,7 +23,7 @@ session_start();
                 $sql = "SELECT `userid` FROM `users` WHERE `username`=`$username`;";
                 $result = mysqli_query($conn, $sql);
                 $_SESSION["userID"] = $result;
-                header('location: ../pages/settings.html');
+                header('location: ../pages/settings.php');
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }
