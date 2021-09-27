@@ -12,4 +12,4 @@ session_start();
     <li><a href="#" target="messages">contact one</a></li>
     <li><a href="#" target="messages">contact two</a></li>
 </ul>
-<iframe name="messages" src="messages.html" frameborder="0"></iframe>
+<iframe name="messages" src="messages.php" frameborder="0"></iframe>

@@ -2,5 +2,7 @@
 session_start();
 ?>
 <link rel="stylesheet" href="../../styles/settings.css">
-this is the account settings like totally
+Your username is: 
 <?php echo $_SESSION["username"]; ?>
+Your userID is: 
+<?php echo $_SESSION["userID"]; ?>

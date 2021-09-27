@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") { # If the server recieves a POST request then
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
 
