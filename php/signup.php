@@ -20,9 +20,10 @@ session_start();
                 $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Set the SQL statement to insert the entered users details into the database (stores the hashed password)
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
                 $_SESSION["username"] = $username;
-                $sql = "SELECT `userid` FROM `users` WHERE `username`=`$username`;";
+                $sql = "SELECT `userID` FROM `users` WHERE `username`=`$username`;";
                 $result = mysqli_query($conn, $sql);
-                $_SESSION["userID"] = $result;
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["userID"] = $row["userID"];
                 header('location: ../pages/settings.php');
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match

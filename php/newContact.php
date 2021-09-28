@@ -8,13 +8,14 @@
         
         $userID1binary = decbin($_SESSION["userID"]);
 
-        $sql = "SELECT `userid` FROM `users` WHERE `username`=`$username`;";
+        $sql = "SELECT `userID` FROM `users` WHERE `username`='$username';";
         $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
 
         $num = mysqli_num_rows($result); # Store the amount of rows fetched from the previous SQL query
 
-        if ($num == 0) { # If the amount of rows returned is 0 (username doesn't already exist) then
-            $userID2binary = decbin($result);
+        if ($num != 0) { # If the amount of rows returned is 0 (username doesn't already exist) then
+            $userID2binary = decbin($row["userID"]);
         } else {
             echo "username doesn't exist"; # This will display on the webpage if something is returned in the initial query
         }
