@@ -5,8 +5,7 @@
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
 
         $username = $_POST["username"]; # Sets username equal to the username passed by the POST method
-        
-        $userID1binary = decbin($_SESSION["userID"]);
+        $userID1 = $_SESSION["userID"];
 
         $sql = "SELECT `userID` FROM `users` WHERE `username`='$username';";
         $result = mysqli_query($conn, $sql);
@@ -15,15 +14,27 @@
         $num = mysqli_num_rows($result); # Store the amount of rows fetched from the previous SQL query
 
         if ($num != 0) { # If the amount of rows returned is 0 (username doesn't already exist) then
-            $userID2binary = decbin($row["userID"]);
+            $userID2 = $row["userID"];
         } else {
             echo "username doesn't exist"; # This will display on the webpage if something is returned in the initial query
         }
-
-        $tableName = $userID1binary ^ $userID2binary;
+        
+        if ($userID1 > $userID2) {
+            $tableName = sprintf('%08d', (string)$userID2) . sprintf('%08d', (string)$userID1);
+        } elseif ($userID2 > $userID1) {
+            $tableName = sprintf('%08d', (string)$userID1) . sprintf('%08d', (string)$userID2);
+        } else {
+            echo "you dumb";
+        }
         echo $tableName;
 
-        $sql = "CREATE TABLE $tableName(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL,PRIMARY KEY (userID));";
+        $sql = "SHOW TABLES LIKE `$tableName`";
+        $result = mysqli_query($conn, $sql);
+        echo "$result";
+        $row = mysqli_fetch_assoc($result);
+        echo $row["Tables"];
+
+        $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
         $result = mysqli_query($conn, $sql);
     }
 ?>
