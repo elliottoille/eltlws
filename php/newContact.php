@@ -28,13 +28,15 @@
         }
         echo $tableName;
 
-        $sql = "SHOW TABLES LIKE `$tableName`";
+        $sql = "SHOW TABLES WHERE $tableName NOT LIKE '\_%' AND $tableName NOT LIKE '%\_xrefs'; ";
         $result = mysqli_query($conn, $sql);
-        echo "$result";
         $row = mysqli_fetch_assoc($result);
-        echo $row["Tables"];
-
-        $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
-        $result = mysqli_query($conn, $sql);
+        echo $row["Tables_in_eltlws"];
+        if ($row["Tables_in_eltlws"] == $tableName) {
+            echo "contact already added";
+        } else {
+            $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
+            $result = mysqli_query($conn, $sql);
+        }
     }
 ?>
