@@ -21,6 +21,7 @@ session_start();
             echo "passwords match"; # Display that the entered passwords match on the webpage
             $_SESSION["username"] = $username;
             $_SESSION["userID"] = $row["userID"];
+            $_SESSION["loggedIn"] = "T";
             header('location: ../pages/settings.php');
         } else {
             echo "what the fuck";

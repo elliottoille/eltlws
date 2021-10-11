@@ -4,10 +4,18 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") { # If the server recieves a POST request then
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
 
-        $username = $_POST["username"]; # Sets username equal to the username passed by the POST method
-        $userID1 = $_SESSION["userID"];
+        if ($_SESSION["loggedIn"] = "T") {
+            newContact();
+        } else {
+            echo "you are not logged in";
+        }
+    }
 
-        $sql = "SELECT `userID` FROM `users` WHERE `username`='$username';";
+function newContact() {
+    $username = $_POST["username"]; # Sets username equal to the username passed by the POST method
+        $userID1 = $_SESSION["userID"]; # Sets userID1 equal to the userID of the logged in user
+
+        $sql = "SELECT `userID` FROM `users` WHERE `username`='$username';"; # SQL code that fetches the associated userID of the username entered by the user
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
 
@@ -38,5 +46,5 @@
             $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
             $result = mysqli_query($conn, $sql);
         }
-    }
+}
 ?>
