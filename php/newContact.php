@@ -40,6 +40,7 @@ function newContact() {
         $sql = "SHOW TABLES WHERE $tableName NOT LIKE '\_%' AND $tableName NOT LIKE '%\_xrefs'; ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
+        echo $row["Tables_in_eltlws"];
         if ($row["Tables_in_eltlws"] == $tableName) {
             echo "contact already added";
         } else {

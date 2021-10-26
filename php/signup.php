@@ -20,6 +20,10 @@ session_start();
                 $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Set the SQL statement to insert the entered users details into the database (stores the hashed password)
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
                 $_SESSION["username"] = $username;
+                session_destroy();
+                session_destroy();
+                header('Location: ../index.html');
+
                 $sql = "SELECT * FROM `users` WHERE `username`=`$username`;";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);
