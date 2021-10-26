@@ -3,15 +3,15 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") { # If the server recieves a POST request then
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
-
-        if ($_SESSION["loggedIn"] = "T") {
-            newContact();
-        } else {
+        if (!(isset($_SESSION['username']))) {
             echo "you are not logged in";
+        } else {
+            newContact();
         }
     }
 
 function newContact() {
+    include 'dbconnect.php';
     $username = $_POST["username"]; # Sets username equal to the username passed by the POST method
         $userID1 = $_SESSION["userID"]; # Sets userID1 equal to the userID of the logged in user
 
@@ -25,6 +25,7 @@ function newContact() {
             $userID2 = $row["userID"];
         } else {
             echo "username doesn't exist"; # This will display on the webpage if something is returned in the initial query
+            return;
         }
         
         if ($userID1 > $userID2) {
@@ -32,14 +33,13 @@ function newContact() {
         } elseif ($userID2 > $userID1) {
             $tableName = sprintf('%08d', (string)$userID1) . sprintf('%08d', (string)$userID2);
         } else {
-            echo "you dumb";
+            echo "you cannot add yourself as a contact";
         }
         echo $tableName;
 
         $sql = "SHOW TABLES WHERE $tableName NOT LIKE '\_%' AND $tableName NOT LIKE '%\_xrefs'; ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
-        echo $row["Tables_in_eltlws"];
         if ($row["Tables_in_eltlws"] == $tableName) {
             echo "contact already added";
         } else {

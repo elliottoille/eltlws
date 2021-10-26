@@ -13,18 +13,15 @@ session_start();
 
         $num = mysqli_num_rows($result);
         
-        echo $num;
-        
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($password, $row["password"])) { # If the given password matches the password from the database (checks hashes of the passwords) then
             echo "passwords match"; # Display that the entered passwords match on the webpage
             $_SESSION["username"] = $username;
             $_SESSION["userID"] = $row["userID"];
-            $_SESSION["loggedIn"] = "T";
             header('location: ../pages/settings.php');
         } else {
-            echo "what the fuck";
+            echo "wrong password";
         }
     }
 ?>

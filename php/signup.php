@@ -24,7 +24,6 @@ session_start();
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION["userID"] = $row["userID"];
-                $_SESSION["loggedIn"] = "T";
                 header('location: ../pages/settings.php');
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
