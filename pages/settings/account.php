@@ -3,6 +3,19 @@ session_start();
 ?>
 <link rel="stylesheet" href="../../styles/settings.css">
 Your username is: 
-<?php echo $_SESSION["username"]; ?><br>
+<?php
+if (isset($_SESSION['username'])) {
+    echo $_SESSION["username"];
+} else {
+    echo "you not log in";
+}
+?>
+<br>
 Your userID is: 
-<?php echo $_SESSION["userID"]; ?>
+<?php 
+if (isset($_SESSION['username'])) {
+    echo $_SESSION["userID"];
+} else {
+    echo "you not log in";
+}
+?>
