@@ -1,5 +1,4 @@
 <?php
-session_start();
     if ($_SERVER["REQUEST_METHOD"] == "POST") { # If the server recieves a POST request then
         include 'dbconnect.php'; # Include code from dbconnect.php in this document
         $username = mysqli_real_escape_string($conn, $_POST["username"]); # Sets username equal to the username passed by the POST method
@@ -11,17 +10,9 @@ session_start();
         if ($num == 0) { # If the amount of rows returned is 0 (username doesn't already exist) then
             if ($password == $confirmPassword) { # If both the entered passwords match each other then
                 $hash = password_hash($password, PASSWORD_DEFAULT); # Set hash equal to the entered password but hashed
-                $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Set the SQL statement to insert the entered users details into the database (stores the hashed password)
+                $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Create an SQL query that enters the username and hashed password into the table
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
-                $_SESSION["username"] = $username;
-                session_destroy();
-                header('Location: ../index.html');
-
-                $sql = "SELECT * FROM `users` WHERE `username`=`$username`;";
-                $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $_SESSION["userID"] = $row["userID"];
-                header('location: ../pages/settings.php');
+                header('Location: ../index.html'); # Redirect the page to the homepage
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }
