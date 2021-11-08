@@ -9,10 +9,11 @@
         $num = mysqli_num_rows($result); # Store the amount of rows fetched from the previous SQL query
         if ($num == 0) { # If the amount of rows returned is 0 (username doesn't already exist) then
             if ($password == $confirmPassword) { # If both the entered passwords match each other then
+                include 'genKeys.php';
                 $hash = password_hash($password, PASSWORD_DEFAULT); # Set hash equal to the entered password but hashed
-                $sql = "INSERT INTO `users` ( `username`, `password`) VALUES ('$username', '$hash');"; # Create an SQL query that enters the username and hashed password into the table
+                $sql = "INSERT INTO `users` ( `username`, `password`, `privKey`, `pubKey`) VALUES ('$username', '$hash', `$private_key`, `$public_key`);"; # Create an SQL query that enters the username and hashed password into the table
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
-                header('Location: ../index.html'); # Redirect the page to the homepage
+                #header('Location: ../pages/settings/account.html'); # Redirect the page to the homepage
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }

@@ -14,6 +14,6 @@ session_start();
 
     <p id="passwordMatchAlert"></p>
 
-    <button type="submit">sign up</button>
+    <button id="btn" type="submit">sign up</button>
 </form>
 <script src="../js/checkPasswordMatch.js" type="text/javascript"></script>
