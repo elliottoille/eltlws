@@ -1,10 +1,15 @@
 <?php
-session_start();
 include 'dbconnect.php';
-$sql = "SELECT `high` FROM `userscontacts` WHERE `low`='(int)$_SESSION[`userID`]';";
+$userID = $_SESSION['userID'];
+$sql = "SELECT `high` FROM `userscontacts` WHERE `low`='$userID';";
 $result = mysqli_query($conn, $sql);
-# $row = mysqli_fetch_assoc($result);
+#$row = mysqli_fetch_assoc($result);
 while ($row = mysqli_fetch_assoc($result)) {
-    echo var_dump($row);
+    $contact = $row['high'];
+    $sql = "SELECT `username` FROM `users` WHERE userID=$contact;";
+    $resultName = mysqli_query($conn, $sql);
+    $contactName = mysqli_fetch_assoc($resultName);
+    $contactName = $contactName['username'];
+    echo $contactName;
 }
 ?>
