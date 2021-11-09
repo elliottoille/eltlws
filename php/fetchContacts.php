@@ -10,6 +10,19 @@ while ($row = mysqli_fetch_assoc($result)) {
     $resultName = mysqli_query($conn, $sql);
     $contactName = mysqli_fetch_assoc($resultName);
     $contactName = $contactName['username'];
-    echo $contactName;
+    $contactBox = '<li><a href=' . $contactName . ' target="messages">' . $contactName . '</a></li>';
+    echo $contactBox;
+}
+$sql = "SELECT `low` FROM `userscontacts` WHERE `high`='$userID';";
+$result = mysqli_query($conn, $sql);
+#$row = mysqli_fetch_assoc($result);
+while ($row = mysqli_fetch_assoc($result)) {
+    $contact = $row['low'];
+    $sql = "SELECT `username` FROM `users` WHERE userID=$contact;";
+    $resultName = mysqli_query($conn, $sql);
+    $contactName = mysqli_fetch_assoc($resultName);
+    $contactName = $contactName['username'];
+    $contactBox = '<li><a href=' . $contactName . ' target="messages">' . $contactName . '</a></li>';
+    echo $contactBox;
 }
 ?>
