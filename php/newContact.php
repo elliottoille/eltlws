@@ -27,18 +27,29 @@ function newContact() { # define the new function
     
     if ($userID1 > $userID2) { # If the userID1 is bigger than userID2
         $tableName = sprintf('%08d', (string)$userID2) . sprintf('%08d', (string)$userID1); # make each userID 8 digits long by padding the front with 0s and create a string with the smaller UID first
+        $low = $userID2;
+        $high = $userID1;
     } elseif ($userID2 > $userID1) { # if userID2 is bigger than userID1
         $tableName = sprintf('%08d', (string)$userID1) . sprintf('%08d', (string)$userID2); # format the userIDs again and make the string with smaller UID first
+        $low = $userID1;
+        $high = $userID2;
     } else {
         echo "you cannot add yourself as a contact"; # If the userIDs are the same then the user is trying to add themselves as a contact which isn't allowed
         return; # end function if they do this
     }
+    $sql = "INSERT INTO `userscontacts` ( `low`, `high`) VALUES ('$low', '$high');";
+    $result = mysqli_query($conn, $sql);
 
     $sql = "SHOW TABLES WHERE Tables_in_eltlws LIKE '$tableName';"; # Find all tables where 
     $result = mysqli_query($conn, $sql); # Run the query
     $row = mysqli_fetch_assoc($result); # get the associated results
-    if ($row["Tables_in_eltlws"] == $tableName) { # if one of the results matches the table we want to create
-        echo "contact already added"; # then output that we already have that user as a contact
+    if (mysqli_num_rows($result) != 0) {
+        if ($row["Tables_in_eltlws"] == $tableName) { # if one of the results matches the table we want to create
+            echo "contact already added"; # then output that we already have that user as a contact
+        } else {
+            $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
+            $result = mysqli_query($conn, $sql); # otherwise create a new table with the name of the table we just generated
+        } 
     } else {
         $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
         $result = mysqli_query($conn, $sql); # otherwise create a new table with the name of the table we just generated

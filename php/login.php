@@ -7,7 +7,7 @@ session_start();
         $username = mysqli_real_escape_string($conn, $_POST["username"]); # Set the username equal to the username passed by the POST method
         $password = mysqli_real_escape_string($conn, $_POST["password"]); # Set the password equal to the password passed by the POST method
         
-        $sql = "SELECT `password`, `userID` FROM `users` WHERE username='$username';"; # Create an SQL statement that fetches the password from the database where the username matches the entered username
+        $sql = "SELECT * FROM `users` WHERE username='$username';"; # Create an SQL statement that fetches the password from the database where the username matches the entered username
 
         $result = mysqli_query($conn, $sql); # Query the database with the previous SQL statement
 
@@ -19,6 +19,8 @@ session_start();
             echo "passwords match"; # Display that the entered passwords match on the webpage
             $_SESSION["username"] = $username;
             $_SESSION["userID"] = $row["userID"];
+            $_SESSION["publicKey"] = $row["pubKey"];
+            $_SESSION["privateKey"] = $row["privKey"];
             header('location: ../pages/settings.php');
         } else {
             echo "wrong password";
