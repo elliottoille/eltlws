@@ -47,11 +47,11 @@ function newContact() { # define the new function
         if ($row["Tables_in_eltlws"] == $tableName) { # if one of the results matches the table we want to create
             echo "contact already added"; # then output that we already have that user as a contact
         } else {
-            $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
+            $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, `userID` INT NOT NULL, PRIMARY KEY (`messageID`), FOREIGN KEY (`userID`) REFERENCES `users`(`userID`));";
             $result = mysqli_query($conn, $sql); # otherwise create a new table with the name of the table we just generated
         } 
     } else {
-        $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, PRIMARY KEY (`messageID`));";
+        $sql = "CREATE TABLE `$tableName`(`messageID` INT NOT NULL AUTO_INCREMENT, `message` TEXT(65535) NOT NULL, `userID` INT NOT NULL, PRIMARY KEY (`messageID`), FOREIGN KEY (`userID`) REFERENCES `users`(`userID`));";
         $result = mysqli_query($conn, $sql); # otherwise create a new table with the name of the table we just generated
     }  
 }

@@ -10,7 +10,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $resultName = mysqli_query($conn, $sql);
     $contactName = mysqli_fetch_assoc($resultName);
     $contactName = $contactName['username'];
-    $contactBox = '<li><a href=' . $contactName . ' target="messages">' . $contactName . '</a></li>';
+    $contactBox = '<li>
+    <form action="..\php\setCurrentCont.php" method="POST">
+        <button name="contact" value=' . $contactName . ' type="submit">' . $contactName . '</button>
+    </form>
+</li>';
     echo $contactBox;
 }
 $sql = "SELECT `low` FROM `userscontacts` WHERE `high`='$userID';";
@@ -22,7 +26,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $resultName = mysqli_query($conn, $sql);
     $contactName = mysqli_fetch_assoc($resultName);
     $contactName = $contactName['username'];
-    $contactBox = '<li><a href=' . $contactName . ' target="messages">' . $contactName . '</a></li>';
+    $contactBox = '<li>
+    <form action="..\php\setCurrentCont.php" method="POST">
+        <button name="contact" value=' . $contactName . ' type="submit">' . $contactName . '</button>
+    </form>
+</li>';
     echo $contactBox;
 }
 ?>

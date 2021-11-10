@@ -8,11 +8,11 @@ li {
 li a, span{
     margin-left: 15px;
 }
-li form {
+li #newC {
     margin-left: 15px;
     display: none;
 }
-li:hover form {
+li:hover #newC {
     display: block;
 }
 ul {
