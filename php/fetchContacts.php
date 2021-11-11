@@ -18,7 +18,6 @@ while ($row = mysqli_fetch_assoc($result)) { # While there are unchecked rows
 }
 $sql = "SELECT `low` FROM `userscontacts` WHERE `high`='$userID';"; # Do the same as the first section for the otherside of the column
 $result = mysqli_query($conn, $sql);
-#$row = mysqli_fetch_assoc($result);
 while ($row = mysqli_fetch_assoc($result)) {
     $contact = $row['low'];
     $sql = "SELECT `username` FROM `users` WHERE userID=$contact;";
