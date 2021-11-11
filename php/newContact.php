@@ -27,23 +27,23 @@ function newContact() { # define the new function
     
     if ($userID1 > $userID2) { # If the userID1 is bigger than userID2
         $tableName = sprintf('%08d', (string)$userID2) . sprintf('%08d', (string)$userID1); # make each userID 8 digits long by padding the front with 0s and create a string with the smaller UID first
-        $low = $userID2;
-        $high = $userID1;
+        $low = $userID2; # Set the variable low to the lower userID
+        $high = $userID1; # Set the variable high to the higher userID
     } elseif ($userID2 > $userID1) { # if userID2 is bigger than userID1
         $tableName = sprintf('%08d', (string)$userID1) . sprintf('%08d', (string)$userID2); # format the userIDs again and make the string with smaller UID first
-        $low = $userID1;
-        $high = $userID2;
+        $low = $userID1; # Set the variable low to the lower userID
+        $high = $userID2; # Set the variable high to the higher userID
     } else {
         echo "you cannot add yourself as a contact"; # If the userIDs are the same then the user is trying to add themselves as a contact which isn't allowed
         return; # end function if they do this
     }
-    $sql = "INSERT INTO `userscontacts` ( `low`, `high`) VALUES ('$low', '$high');";
-    $result = mysqli_query($conn, $sql);
+    $sql = "INSERT INTO `userscontacts` ( `low`, `high`) VALUES ('$low', '$high');"; # Insert the values of low and high into the userContacts table
+    $result = mysqli_query($conn, $sql); # Run the previous query
 
     $sql = "SHOW TABLES WHERE Tables_in_eltlws LIKE '$tableName';"; # Find all tables where 
     $result = mysqli_query($conn, $sql); # Run the query
     $row = mysqli_fetch_assoc($result); # get the associated results
-    if (mysqli_num_rows($result) != 0) {
+    if (mysqli_num_rows($result) != 0) { # If the num of rows is not 0 then
         if ($row["Tables_in_eltlws"] == $tableName) { # if one of the results matches the table we want to create
             echo "contact already added"; # then output that we already have that user as a contact
         } else {
