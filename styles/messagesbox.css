@@ -1,0 +1,14 @@
+body {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: red;
+}
+#right {
+    background: blue;
+    float: right;
+}
+#left {
+    background: white;
+    float: left;
+}

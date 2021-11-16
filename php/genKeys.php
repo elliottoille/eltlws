@@ -7,5 +7,6 @@ $config = array( # Make an array that stores the variables for creating keys
 $res = openssl_pkey_new($config); # Generate new keys and store them to this variable
 openssl_pkey_export($res, $private_key); # Export the previously made private key into variable "$private_key"
 $public_key = openssl_pkey_get_details($res); # Store details about the public key into this variable
-$public_key = $public_key["key"]; # Redefine this variable as the actual key value
+$a = $public_key["key"]; # Redefine this variable as the actual key value
+$public_key = $a;
 ?>
