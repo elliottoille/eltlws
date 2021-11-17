@@ -19,3 +19,22 @@ if (isset($_SESSION['username'])) {
     echo "you not log in";
 }
 ?>
+<br><br>
+Your private key is: <br>
+<?php 
+if (isset($_SESSION['username'])) {
+    echo $_SESSION["privateKey"];
+} else {
+    echo "you not log in";
+}
+?>
+<br><br>
+Your public key is: <br>
+<?php 
+if (isset($_SESSION['username'])) {
+    echo $_SESSION["publicKey"];
+} else {
+    echo "you not log in";
+}
+?>
+<br>

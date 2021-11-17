@@ -1,2 +1,8 @@
 <link rel="stylesheet" href="../../styles/settings.css">
-and this is epic layout settings
+Yeah like totally choose yo font here:
+<form>
+    <select>
+</select>
+OK BROTHER YOU WANT KNOW WHAT NEED TO DO, THIS HERE FORM OR WHATEVER SETS A PHP VARIABLE WHICH IS SAVED TO database
+THEN WHEN FIRST RENDERING THE PAGE RUN SOME PHP CODE THAT GENERATES A CSS FILE BASED ON THE LAYOUT SETTINGS THAT THE USER SELECTED,
+EG COLOUR, FONT ETC.
