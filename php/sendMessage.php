@@ -17,9 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") { # If the server request was a GET req
     } else {
         $userID = $_SESSION["userID"]; # Set $userID to the userID of the logged in user
         openssl_public_encrypt($message, $encrypted, $pubKey); # Encrypt the message with the current contacts public key to the variable $encrypted
-        $encrypted = mysqli_real_escape_string($conn, bin2hex($encrypted));
+        $encrypted = mysqli_real_escape_string($conn, bin2hex($encrypted)); # Escape the encrypted message that has been converted to hexadecimal
         $sql = "INSERT INTO `$contactTable` (`message`, `userID`) VALUES ('$encrypted', '$userID');"; # Write the encrypted message to the contact's table
-        echo $sql;
         $result = mysqli_query($conn, $sql); # Execute the SQL query
     }
 }

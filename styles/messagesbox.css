@@ -1,14 +1,23 @@
 body {
-    padding: 0;
+    margin: 0;
     height: 100%;
     width: 100%;
-    background: red;
+}
+#stretch {
+    width: 100%;
+    height: 50px;
+}
+.message {
+    display: block;
+    padding: 10px;
 }
 #right {
-    background: blue;
+    background: lightskyblue;
     float: right;
+    border-radius: 10px 10px 0 10px;
 }
 #left {
     background: white;
     float: left;
+    border-radius: 10px 10px 10px 0;
 }
