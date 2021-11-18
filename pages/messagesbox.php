@@ -3,6 +3,7 @@
         <link rel="stylesheet" href="../styles/messagesbox.css"> <!-- Link the CSS style sheet to this file -->
     </head>
     <body>
+        <div id="everything">
         <?php
             session_start(); # Start a session
 
@@ -42,5 +43,6 @@
                 echo $html; # Display the HTML code on screen once it has been set
             }
         ?>
+    </div>
     </body>
 </html>

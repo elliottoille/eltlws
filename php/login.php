@@ -10,10 +10,8 @@ session_start(); # Start a session
         $sql = "SELECT * FROM `users` WHERE username='$username';"; # Create an SQL statement that fetches the password from the database where the username matches the entered username
 
         $result = mysqli_query($conn, $sql); # Query the database with the previous SQL statement
-
-        $num = mysqli_num_rows($result); # Fetch the number of rows that were returned with the previous SQL statement
         
-        $row = mysqli_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($result); # Set row to a dictionary of the data fetched from the query
 
         if (password_verify($password, $row["password"])) { # If the given password matches the password from the database (checks hashes of the passwords) then
             echo "passwords match"; # Display that the entered passwords match on the webpage
@@ -21,8 +19,8 @@ session_start(); # Start a session
             $_SESSION["userID"] = $row["userID"]; # Set the session variable userID to the generated userID
             $_SESSION["publicKey"] = $row["pubKey"]; # Set the session variable publicKey to the generated pubKey
             $_SESSION["privateKey"] = $row["privKey"]; # Set the session variable privateKey to the generated privKey
-            $_SESSION["currentContactTable"] = "";
-            $_SESSION["currentContactPubKey"] = "";
+            $_SESSION["currentContactTable"] = ""; # Set the session variable currentContactTable to a blank string
+            $_SESSION["currentContactPubKey"] = ""; # Set the session variable currentContactPubKey to a blank string
             header('location: ../pages/settings.php'); # Redirect the user to the settings page
         } else { # If the passwords entered do not match then
             echo "wrong password"; # Display message "wrong password"
