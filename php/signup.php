@@ -18,7 +18,7 @@
                 $sql = "INSERT INTO `users` ( `username`, `password`, `privKey`, `pubKey`) VALUES ('$username', '$hash', '$private_key', '$public_key');";
                 # ^^ Create an SQL query that enters the username and hashed password into the table
                 $result = mysqli_query($conn, $sql); # Query the database with the SQL statement!
-                header('Location: ../index.html'); # Redirect the page to the homepage
+                header('Location: ../pages/login.php'); # Redirect the page to the homepage
             } else {
                 echo "passwords do not match"; # This will display on the webpage if both passwords do not match
             }

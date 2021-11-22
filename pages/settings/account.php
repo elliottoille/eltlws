@@ -37,4 +37,16 @@ if (isset($_SESSION['username'])) {
     echo "you not log in";
 }
 ?>
-<br>
+<br><br>
+Delete account:
+<form action="php/deleteAccount.php" method="POST">
+    <label for="password">password</label>
+    <input id="password" type="password" placeholder="password" name="password" required>
+
+    <label for="confirmPassword">confirm password</label>
+    <input id="confirmPassword" type="password" placeholder="confirm password" name="confirmPassword" onkeyup="checkPasswordMatch();" required>
+
+    <p id="passwordMatchAlert"></p>
+
+    <button id="btn" type="submit">sign up</button>
+</form>
